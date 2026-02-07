@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:macro name="fronius_torch" params="prefix">
+
+    <!-- tool frame - fixed frame -->
+    <joint name="${prefix}joint_a6-tool0" type="fixed">
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}tool0"/>
+      <origin xyz="0.000361  0.00000 0.461877" rpy="0 ${DEG2RAD*33.86} 0"/> <!-- original torch -->
+      <axis xyz="0 0 -1"/>
+    </joint>
+
+  </xacro:macro>
+</robot>
+
+

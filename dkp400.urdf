@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:include filename="$(find kuka_resources)/urdf/common_constants.xacro"/>
+  <xacro:include filename="$(find kuka_resources)/urdf/common_materials.xacro"/>
+
+  <xacro:macro name="kuka_dkp400v1" params="prefix">
+    <!-- JOINTS -->
+    <!-- joint 1 (E1) -->
+    <joint name="joint_e1" type="revolute">
+      <origin xyz="0 0 0.510" rpy="0 0 ${DEG2RAD * 180}"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="-1 0 0"/>
+      <limit effort="0" lower="${DEG2RAD * -90}" upper="${DEG2RAD * 90}" velocity="${DEG2RAD * 60}"/>
+    </joint>
+    <!-- joint 2 (E2) -->
+    <joint name="joint_e2" type="revolute">
+      <origin xyz="0 0 0.347" rpy="0 0 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="0" lower="${-DEG2RAD * 185}" upper="${DEG2RAD * 185}" velocity="${DEG2RAD * 90}"/>
+    </joint>
+    
+    <!-- tool frame - fixed frame -->
+    <joint name="joint_e2-tool0" type="fixed">
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}tool0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    <!-- END JOINTS -->
+	
+
+  </xacro:macro>
+</robot>
+
+

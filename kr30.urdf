@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+<xacro:macro name="kuka_kr30r2100" params="prefix">
+  <!-- JOINTS -->
+  <!-- joint 1 (A1) -->
+  <joint name="joint_a1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.575"/>
+    <parent link="${prefix}base_link"/>
+    <child link="${prefix}link_1"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="0" lower="-2.96706" upper="2.96706" velocity="3.83972"/>
+  </joint>
+  <!-- joint 2 (A2) -->
+  <joint name="joint_a2" type="revolute">
+    <origin rpy="0 0 0" xyz="0.175 0 0"/>
+    <parent link="${prefix}link_1"/>
+    <child link="${prefix}link_2"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-3.22886" upper="1.13446" velocity="3.66519"/>
+  </joint>
+  <!-- joint 3 (A3) -->
+  <joint name="joint_a3" type="revolute">
+    <origin rpy="0 0 0" xyz="0.890 0 0"/>
+    <parent link="${prefix}link_2"/>
+    <child link="${prefix}link_3"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-2.3911" upper="2.84489" velocity="4.71239"/>
+  </joint>
+  <!-- joint 4 (A4) -->
+  <joint name="joint_a4" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.05"/>
+    <parent link="${prefix}link_3"/>
+    <child link="${prefix}link_4"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="0" lower="${-DEG2RAD * 185}" upper="${DEG2RAD * 185}" velocity="6.6497"/>
+  </joint>
+  <!-- joint 5 (A5) -->
+  <joint name="joint_a5" type="revolute">
+    <origin rpy="0 0 0" xyz="1.035 0 0"/>
+    <parent link="${prefix}link_4"/>
+    <child link="${prefix}link_5"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-2.0944" upper="2.0944" velocity="5.42797"/>
+  </joint>
+  <!-- joint 6 (A6) -->
+  <joint name="joint_a6" type="revolute">
+    <origin rpy="0 ${DEG2RAD*90} 0" xyz="0.185 0 0"/>
+    <parent link="${prefix}link_5"/>
+    <child link="${prefix}link_6"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="0" lower="${-DEG2RAD * 270}" upper="${DEG2RAD * 270}" velocity="8.58702"/>
+  </joint>
+  </xacro:macro>
+</robot>
